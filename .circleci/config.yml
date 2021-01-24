@@ -5,9 +5,6 @@ defaults: &defaults
   docker:
     - image: python:3.7-alpine3.11
   working_directory: ~/projects
-  command: sudo apt update -y
-  command: sudo apt upgrade -y
-  command: sudo apt install ansible -y
 
 jobs:
   run_ansible:
@@ -17,6 +14,10 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "e5:c8:e2:70:6c:2e:d9:19:cb:f4:59:5f:f9:22:91:38:08:7a:80:51"
+      - run:
+          name: Install Dependencies
+          command: |
+            apk add --update ansible
       - run:
           name: Deploy Ansible playbook
           command: ansible-playbook -i inventory main.yml
