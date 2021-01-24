@@ -11,8 +11,12 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "e5:c8:e2:70:6c:2e:d9:19:cb:f4:59:5f:f9:22:91:38:08:7a:80:51"
       - run:
-          name: Deploy cloudformation
+          name: Deploy Ansible playbook
+          
 
 workflows:
   create_infrastructure:
