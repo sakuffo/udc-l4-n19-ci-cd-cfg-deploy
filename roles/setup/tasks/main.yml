@@ -26,15 +26,15 @@
 
 - name: "Start Sever"
   become: yes
-  command: mkdir ~/node_server/
+  command: mkdir ~/node_srv/
 
 - name: "move page file"
   become: yes
   copy:
     src: ../files/index.js
-    dest: ~/node_server/
+    dest: ~/node_srv/
 
 - name: Executing node
   become: yes
   shell: |
-    pm2 start ~/node_server/index.js -f
+    pm2 start ~/node_srv/index.js -f
