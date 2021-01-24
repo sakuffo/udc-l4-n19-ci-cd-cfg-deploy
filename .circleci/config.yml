@@ -16,7 +16,8 @@ jobs:
             - "e5:c8:e2:70:6c:2e:d9:19:cb:f4:59:5f:f9:22:91:38:08:7a:80:51"
       - run:
           name: Deploy Ansible playbook
-          
+          command: ansible-playbook -i inventory main.yml
+
 
 workflows:
   create_infrastructure:
