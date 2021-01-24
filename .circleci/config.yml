@@ -5,9 +5,12 @@ defaults: &defaults
   docker:
     - image: python:3.7-alpine3.11
   working_directory: ~/projects
+  command: sudo apt update -y
+  command: sudo apt upgrade -y
+  command: sudo apt install ansible -y
 
 jobs:
-  create_infrastructure:
+  run_ansible:
     <<: *defaults
     steps:
       - checkout
