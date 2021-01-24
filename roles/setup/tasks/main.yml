@@ -25,6 +25,7 @@
     state: present
 
 - name: "Start Sever"
+  become: yes
   command: mkdir ~/node_server/
 
 - name: "move page file"
@@ -34,5 +35,6 @@
     dest: ~/node_server/
 
 - name: Executing node
+  become: yes
   shell: |
     pm2 start ~/node_server/index.js -f
