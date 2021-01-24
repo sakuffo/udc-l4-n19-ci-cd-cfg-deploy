@@ -26,6 +26,6 @@ jobs:
 workflows:
   create_infrastructure:
     jobs:
-      - create_infrastructure:
+      - run_ansible:
           context: udacity-items
 
