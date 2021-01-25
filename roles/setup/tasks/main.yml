@@ -1,23 +1,19 @@
 ---
 - name: "update apt packages."
-  become: yes
   apt:
     update_cache: yes
 
 - name: "upgrade packages"
-  become: yes
   apt:
     upgrade: yes
 
 - name: "install dependencies."
-  become: yes
   apt:
     name: ["nodejs", "npm"]
     state: latest
     update_cache: yes
 
 - name: "install pm2"
-  become: yes
   npm:
     name: pm2
     global: yes
@@ -25,16 +21,15 @@
     state: present
 
 - name: "Start Sever"
-  become: yes
   command: mkdir ~/node_srv/
+  args:
+    creates: ~/node_srv/
 
 - name: "move page file"
-  become: yes
   copy:
     src: ../files/index.js
     dest: ~/node_srv/
 
 - name: Executing node
-  become: yes
   shell: |
     pm2 start ~/node_srv/index.js -f
